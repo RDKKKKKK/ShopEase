@@ -18,6 +18,7 @@ public class BucketPolicyConfigDto {
     private String Version;
     private List<Statement> Statement;
 
+
     @Data
     @EqualsAndHashCode(callSuper = false)
     @Builder

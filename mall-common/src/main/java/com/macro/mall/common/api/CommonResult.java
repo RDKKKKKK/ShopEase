@@ -9,6 +9,7 @@ import cn.hutool.json.JSONUtil;
 public class CommonResult<T> {
     private long code;
     private String message;
+
     private T data;
 
     protected CommonResult() {
