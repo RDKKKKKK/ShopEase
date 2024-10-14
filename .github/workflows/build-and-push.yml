@@ -29,10 +29,8 @@ jobs:
 
       - name: Build and push Docker app images
         run: |
-          docker-compose -f document/docker/docker-compose-app.yml build
           docker-compose -f document/docker/docker-compose-app.yml push
 
       - name: Build and push Docker env images
         run: |
-          docker-compose -f document/docker/docker-compose-env.yml build
           docker-compose -f document/docker/docker-compose-env.yml push
