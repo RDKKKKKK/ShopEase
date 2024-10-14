@@ -1,7 +1,7 @@
 version: '3'
 services:
   mall-admin:
-    image: mall/mall-admin:1.0-SNAPSHOT
+    image: roderickyoung/shop-ease/mall-admin:1.0-SNAPSHOT
     container_name: mall-admin
     ports:
       - 8080:8080
@@ -11,10 +11,11 @@ services:
     environment:
       - 'TZ="Asia/Shanghai"'
     external_links:
-      - mysql:db #可以用db这个域名访问mysql服务
-      - nacos-registry:nacos-registry #可以用nacos-registry这个域名访问nacos服务
+      - mysql:db
+      - nacos-registry:nacos-registry
+
   mall-search:
-    image: mall/mall-search:1.0-SNAPSHOT
+    image: roderickyoung/shop-ease/mall-search:1.0-SNAPSHOT
     container_name: mall-search
     ports:
       - 8081:8081
@@ -24,11 +25,12 @@ services:
     environment:
       - 'TZ="Asia/Shanghai"'
     external_links:
-      - elasticsearch:es #可以用es这个域名访问elasticsearch服务
-      - mysql:db #可以用db这个域名访问mysql服务
-      - nacos-registry:nacos-registry #可以用nacos-registry这个域名访问nacos服务
+      - elasticsearch:es
+      - mysql:db
+      - nacos-registry:nacos-registry
+
   mall-portal:
-    image: mall/mall-portal:1.0-SNAPSHOT
+    image: roderickyoung/shop-ease/mall-portal:1.0-SNAPSHOT
     container_name: mall-portal
     ports:
       - 8085:8085
@@ -38,13 +40,14 @@ services:
     environment:
       - 'TZ="Asia/Shanghai"'
     external_links:
-      - redis:redis #可以用redis这个域名访问redis服务
-      - mongo:mongo #可以用mongo这个域名访问mongo服务
-      - mysql:db #可以用db这个域名访问mysql服务
-      - rabbitmq:rabbit #可以用rabbit这个域名访问rabbitmq服务
-      - nacos-registry:nacos-registry #可以用nacos-registry这个域名访问nacos服务
+      - redis:redis
+      - mongo:mongo
+      - mysql:db
+      - rabbitmq:rabbit
+      - nacos-registry:nacos-registry
+
   mall-auth:
-    image: mall/mall-auth:1.0-SNAPSHOT
+    image: roderickyoung/shop-ease/mall-auth:1.0-SNAPSHOT
     container_name: mall-auth
     ports:
       - 8401:8401
@@ -54,9 +57,10 @@ services:
     environment:
       - 'TZ="Asia/Shanghai"'
     external_links:
-      - nacos-registry:nacos-registry #可以用nacos-registry这个域名访问nacos服务
+      - nacos-registry:nacos-registry
+
   mall-gateway:
-    image: mall/mall-gateway:1.0-SNAPSHOT
+    image: roderickyoung/shop-ease/mall-gateway:1.0-SNAPSHOT
     container_name: mall-gateway
     ports:
       - 8201:8201
@@ -66,10 +70,11 @@ services:
     environment:
       - 'TZ="Asia/Shanghai"'
     external_links:
-      - redis:redis #可以用redis这个域名访问redis服务
-      - nacos-registry:nacos-registry #可以用nacos-registry这个域名访问nacos服务
+      - redis:redis
+      - nacos-registry:nacos-registry
+
   mall-monitor:
-    image: mall/mall-monitor:1.0-SNAPSHOT
+    image: roderickyoung/shop-ease/mall-monitor:1.0-SNAPSHOT
     container_name: mall-monitor
     ports:
       - 8101:8101
@@ -79,4 +84,4 @@ services:
     environment:
       - 'TZ="Asia/Shanghai"'
     external_links:
-      - nacos-registry:nacos-registry #可以用nacos-registry这个域名访问nacos服务
+      - nacos-registry:nacos-registry
