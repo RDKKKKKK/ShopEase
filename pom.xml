@@ -313,13 +313,8 @@
         </plugins>
     </build>
 
-    <!--使用aliyun的镜像源提升依赖下载速度-->
+    <!--使用aliyun的镜像源提升依赖下载速度 xx-->
     <repositories>
-        <repository>
-            <id>aliyunmaven</id>
-            <name>aliyun</name>
-            <url>https://maven.aliyun.com/repository/public</url>
-        </repository>
         <repository>
             <id>central2</id>
             <name>central2</name>
