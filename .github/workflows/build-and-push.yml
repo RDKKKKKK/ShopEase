@@ -27,10 +27,11 @@ jobs:
 
       - name: Maven build
         run: |
-          # 进入相应服务目录，先构建 API 模块，再构建 WEB 模块
-          cd ./${{ matrix.service }}
+          # 进入相应服务目录，执行 Maven 打包
+          cd $GITHUB_WORKSPACE/newbee-mall-cloud/${{ matrix.service }}
           
-          mvn clean package ${{ matrix.service }} -DskipTests
+          # 对整个服务模块进行构建，自动处理依赖的子模块
+          mvn clean package -DskipTests
 
   docker-build-and-push:
     needs: maven-build
@@ -53,7 +54,7 @@ jobs:
           IMAGE_NAME=${IMAGE_NAME#newbee-mall-cloud-}
           
           # 构建变更的服务镜像并推送到 DockerHub
-          docker build -t roderickyoung/shopease:${IMAGE_NAME}-1.0.0 $GITHUB_WORKSPACE/${{ matrix.service }}
+          docker build -t roderickyoung/shopease:${IMAGE_NAME}-1.0.0 $GITHUB_WORKSPACE/newbee-mall-cloud/${{ matrix.service }}
           
           # 推送到 DockerHub
           docker push roderickyoung/shopease:${IMAGE_NAME}-1.0.0
