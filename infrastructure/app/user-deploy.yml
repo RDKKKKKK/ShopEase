@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: user-service
+  template:
+    metadata:
+      labels:
+        app: user-service
+    spec:
+      containers:
+        - name: user-service
+          image: roderickyoung/shopease:user-service-1.0.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SERVER_PORT
+              value: "29000"  # 服务端口
+            - name: DB_HOST
+              value: "mysql"  # Kubernetes中MySQL的服务名称
+            - name: DB_PORT
+              value: "3306"
+            - name: DB_NAME
+              value: "newbee_mall_cloud_user_db"
+            - name: DB_USERNAME
+              value: "root"
+            - name: DB_PASSWORD
+              value: "123456"
+            - name: REDIS_HOST
+              value: "redis"  # Kubernetes中Redis的服务名称
+            - name: REDIS_PORT
+              value: "6379"
+            - name: ZIPKIN_BASE_URL
+              value: "http://zipkin:9411"  # Kubernetes中Zipkin的服务地址
+            - name: SENTINEL_DASHBOARD
+              value: "sentinel:9113"  # Kubernetes中Sentinel的服务地址
