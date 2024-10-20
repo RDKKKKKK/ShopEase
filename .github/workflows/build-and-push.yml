@@ -1,2 +1,67 @@
-docker build -t roderickyoung/shop-ease:user-service -f ./newbee-mall-cloud-user-service/Dockerfile .
-docker push roderickyoung/shop-ease:user-service
+name: build and push
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  detect-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      services-changed: ${{ steps.changed-services.outputs.changed }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Detect changed services
+        id: changed-services
+        run: |
+          # 获取变更文件
+          CHANGED_FILES=$(git diff --name-only origin/main)
+          echo "Changed files: $CHANGED_FILES"
+
+          # 定义微服务目录
+          services=("newbee-mall-cloud-shop-cart-service" 
+                    "newbee-mall-cloud-shop-cart-api" 
+                    "newbee-mall-cloud-shop-cart-web"
+                    "newbee-mall-cloud-gateway-admin"
+                    "newbee-mall-cloud-goods-service"
+                    "newbee-mall-cloud-order-service")
+
+          # 初始化一个空数组存放有变更的服务
+          changed_services=()
+          
+          # 检查变更文件是否属于某个服务
+          for service in "${services[@]}"; do
+            if echo "$CHANGED_FILES" | grep -q "$service/"; then
+              changed_services+=("$service")
+            fi
+          done
+          
+          # 输出变更的服务
+          echo "Changed services: ${changed_services[@]}"
+          
+          # 将有变更的服务列表传递给下一个步骤
+          echo "::set-output name=changed::${changed_services[@]}"
+
+  build-and-push:
+    needs: detect-changes
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        service: ${{ fromJson(needs.detect-changes.outputs.services-changed) }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Build and push Docker image
+        run: |
+          # 去掉 'newbee-mall-cloud' 前缀，并根据服务名称调整镜像命名
+          IMAGE_NAME=$(echo ${{ matrix.service }} | sed 's/newbee-mall-cloud-//')
+          
+          # 构建变更的服务镜像并推送到 DockerHub
+          docker build -t roderickyoung/shopease:${IMAGE_NAME}-1.0.0 ./newbee-mall-cloud/${{ matrix.service }}
+          
+          # 推送到 DockerHub
+          docker push roderickyoung/shopease:${IMAGE_NAME}-1.0.0
