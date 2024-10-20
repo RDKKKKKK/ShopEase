@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: seata
+  namespace: default  # 如果你使用了其他命名空间，请替换为相应的名称
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: seata
+  template:
+    metadata:
+      labels:
+        app: seata
+    spec:
+      containers:
+        - name: seata-server
+          image: seataio/seata-server:1.4.2
+          ports:
+            - containerPort: 8091
+          env:
+            # 持久化配置
+            - name: STORE_MODE
+              value: "db"
+            - name: STORE_DB_DATASOURCE
+              value: "dbcp"
+            - name: STORE_DB_DBTYPE
+              value: "mysql"
+            - name: STORE_DB_DRIVERCLASSNAME
+              value: "com.mysql.cj.jdbc.Driver"
+            - name: STORE_DB_URL
+              value: "jdbc:mysql://mysql:3306/seata?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC"
+            - name: STORE_DB_USER
+              value: "root"
+            - name: STORE_DB_PASSWORD
+              value: "123456"
+            - name: STORE_DB_MINCONN
+              value: "5"
+            - name: STORE_DB_MAXCONN
+              value: "30"
+            - name: STORE_DB_GLOBALTABLE
+              value: "global_table"
+            - name: STORE_DB_BRANCHTABLE
+              value: "branch_table"
+            - name: STORE_DB_LOCKTABLE
+              value: "lock_table"
+            - name: STORE_DB_QUERYLIMIT
+              value: "100"
+            - name: STORE_DB_MAXWAIT
+              value: "5000"
+
+            # 配置服务发现为 Kubernetes
+            - name: REGISTRY_TYPE
+              value: "kubernetes"
+            - name: SERVICE_VGROUP_MAPPING_your_tx_service_group
+              value: "default"
+            - name: SERVICE_DEFAULT_GROUPLIST
+              value: "seata-server.default.svc.cluster.local:8091"
+            - name: ENABLE_DEGRADE
+              value: "false"
+            - name: DISABLE_GLOBAL_TRANSACTION
+              value: "false"
