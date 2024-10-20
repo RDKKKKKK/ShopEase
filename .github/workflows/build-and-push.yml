@@ -8,16 +8,18 @@ on:
 jobs:
   maven-build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        service: ["newbee-mall-cloud-shop-cart-service",
-                  "newbee-mall-cloud-user-service",
-                  "newbee-mall-cloud-order-service",
-                  "newbee-mall-cloud-recommend-service",
-                  "newbee-mall-cloud-goods-service"]
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+
+      - name: Cache Maven dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
 
       - name: Set up JDK 8  # 使用 Java 1.8
         uses: actions/setup-java@v3
@@ -25,36 +27,21 @@ jobs:
           java-version: '8'
           distribution: 'adopt'
 
-      - name: Maven build
-        run: |
-          # 进入相应服务目录，执行 Maven 打包
-          cd $GITHUB_WORKSPACE/newbee-mall-cloud/${{ matrix.service }}
-          
-          # 对整个服务模块进行构建，自动处理依赖的子模块
-          mvn clean package -DskipTests
+      - name: Build with Maven
+        run: mvn clean package -DskipTests
 
-  docker-build-and-push:
-    needs: maven-build
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        service: ["newbee-mall-cloud-shop-cart-service",
-                  "newbee-mall-cloud-user-service",
-                  "newbee-mall-cloud-order-service",
-                  "newbee-mall-cloud-recommend-service",
-                  "newbee-mall-cloud-goods-service"]
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Build and push Docker image
+      - name: Build Docker image
         run: |
-          # 使用 Bash 的参数展开移除 'newbee-mall-cloud' 前缀
-          IMAGE_NAME=${{ matrix.service }}
-          IMAGE_NAME=${IMAGE_NAME#newbee-mall-cloud-}
-          
-          # 构建变更的服务镜像并推送到 DockerHub
-          docker build -t roderickyoung/shopease:${IMAGE_NAME}-1.0.0 $GITHUB_WORKSPACE/newbee-mall-cloud/${{ matrix.service }}
-          
-          # 推送到 DockerHub
-          docker push roderickyoung/shopease:${IMAGE_NAME}-1.0.0
+          docker build -t roderickyoung/shopease:shop-cart-service-1.0.0 newbee-mall-cloud-shop-cart-service
+          docker build -t roderickyoung/shopease:user-service-1.0.0 newbee-mall-cloud-user-service
+          docker build -t roderickyoung/shopease:order-service-1.0.0 newbee-mall-cloud-order-service
+          docker build -t roderickyoung/shopease:recommend-service-1.0.0 newbee-mall-cloud-recommend-service
+          docker build -t roderickyoung/shopease:goods-service-1.0.0 newbee-mall-cloud-goods-service
+
+      - name: Push Docker image
+        run: |
+          docker push roderickyoung/shopease:shop-cart-service-1.0.0
+          docker push roderickyoung/shopease:user-service-1.0.0
+          docker push roderickyoung/shopease:order-service-1.0.0
+          docker push roderickyoung/shopease:recommend-service-1.0.0
+          docker push roderickyoung/shopease:goods-service-1.0.0
