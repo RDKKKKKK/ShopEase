@@ -1,9 +1,9 @@
-name: build-and-push
+name: Cloud Native CI/CD
 
 on:
   push:
     branches:
-      - main
+      - main  # 修改为监听 main 分支
 
 jobs:
   detect-changes:
@@ -39,9 +39,10 @@ jobs:
             fi
           done
           
-          # 如果没有检测到变更的服务，给一个默认值（空服务）
+          # 如果没有检测到变更的服务，直接结束工作流
           if [ ${#changed_services[@]} -eq 0 ]; then
-            changed_services+=("no-changes")
+            echo "No changes detected, exiting."
+            exit 0
           fi
 
           # 输出变更的服务，作为 JSON 字符串
@@ -58,11 +59,22 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Build and push Docker image
-        if: matrix.service != 'no-changes'
+      - name: Set up JDK 8  # 使用 Java 1.8
+        uses: actions/setup-java@v3
+        with:
+          java-version: '8'
+          distribution: 'adopt'
+
+      - name: Maven build
         run: |
-          # 去掉 'newbee-mall-cloud' 前缀，并根据服务名称调整镜像命名
-          IMAGE_NAME=$(echo ${{ matrix.service }} | sed 's/newbee-mall-cloud-//')
+          # 进入相应服务目录，执行 Maven 打包
+          cd ./newbee-mall-cloud/${{ matrix.service }}
+          mvn clean package -DskipTests
+
+      - name: Build and push Docker image
+        run: |
+          # 使用参数展开移除 'newbee-mall-cloud' 前缀
+          IMAGE_NAME=${{ matrix.service#newbee-mall-cloud- }}
           
           # 构建变更的服务镜像并推送到 DockerHub
           docker build -t roderickyoung/shopease:${IMAGE_NAME}-1.0.0 ./newbee-mall-cloud/${{ matrix.service }}
