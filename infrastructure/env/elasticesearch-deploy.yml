@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: elasticsearch
+  labels:
+    app: elasticsearch
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: elasticsearch
+  template:
+    metadata:
+      labels:
+        app: elasticsearch
+    spec:
+      containers:
+        - name: elasticsearch
+          image: docker.elastic.co/elasticsearch/elasticsearch:7.10.0
+          ports:
+            - containerPort: 9200  # Elasticsearch HTTP端口
+            - containerPort: 9300  # 集群通信端口
+          env:
+            - name: discovery.type
+              value: single-node
+            - name: ES_JAVA_OPTS
+              value: "-Xms512M -Xmx512M"  # 设置最小和最大JVM内存为1GB
+          resources:
+            requests:
+              memory: "0.5Gi"  # 请求最少1GB内存
+              cpu: "500m"    # 请求最少0.5核CPU
+            limits:
+              memory: "3Gi"  # 限制最多使用2GB内存
+              cpu: "2"       # 限制最多使用1核CPU
+          volumeMounts:
+            - name: elasticsearch-storage
+              mountPath: /usr/share/elasticsearch/data
+      volumes:
+        - name: elasticsearch-storage
+          emptyDir: {}  # 临时存储, 可换为持久卷存储 (Persistent Volume)

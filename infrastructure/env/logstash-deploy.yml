@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: logstash
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: logstash
+  template:
+    metadata:
+      labels:
+        app: logstash
+    spec:
+      containers:
+        - name: logstash
+          image: docker.elastic.co/logstash/logstash:7.10.0
+          ports:
+            - containerPort: 5044
+          args:
+            - "-e"
+            - |
+              input {
+                tcp {
+                  port => 5044
+                  codec => json
+                }
+              }
+              output {
+                elasticsearch {
+                  hosts => ["http://elasticsearch:9200"]  # 修改为你的 Elasticsearch 地址
+                  index => "logstash-%{+YYYY.MM.dd}"     # 根据日期创建索引
+                }
+                stdout { codec => rubydebug }
+              }
