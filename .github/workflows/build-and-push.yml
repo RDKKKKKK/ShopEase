@@ -39,19 +39,18 @@ jobs:
             fi
           done
           
-          # 如果没有检测到变更的服务，直接结束工作流
+          # 如果没有检测到变更的服务，给一个默认值（空服务），防止解析失败
           if [ ${#changed_services[@]} -eq 0 ]; then
-            echo "No changes detected, exiting."
-            exit 0
+            echo "::set-output name=changed::null"
+          else
+            # 输出变更的服务，作为 JSON 字符串
+            echo "::set-output name=changed::$(echo ${changed_services[@]} | jq -R -s -c 'split(" ")')"
           fi
-
-          # 输出变更的服务，作为 JSON 字符串
-          echo "Changed services: ${changed_services[@]}"
-          echo "::set-output name=changed::$(echo ${changed_services[@]} | jq -R -s -c 'split(" ")')"
 
   maven-build:
     needs: detect-changes
     runs-on: ubuntu-latest
+    if: needs.detect-changes.outputs.services-changed != 'null'  # 只有检测到变化时才执行
     strategy:
       matrix:
         service: ${{ fromJson(needs.detect-changes.outputs.services-changed) }}
@@ -74,6 +73,7 @@ jobs:
   docker-build-and-push:
     needs: maven-build
     runs-on: ubuntu-latest
+    if: needs.detect-changes.outputs.services-changed != 'null'  # 只有检测到变化时才执行
     strategy:
       matrix:
         service: ${{ fromJson(needs.maven-build.outputs.services-changed) }}
