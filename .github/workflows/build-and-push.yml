@@ -1,9 +1,9 @@
-name: build and push
+name: Microservices CI/CD
 
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   detect-changes:
@@ -18,7 +18,7 @@ jobs:
         id: changed-services
         run: |
           # 获取变更文件
-          CHANGED_FILES=$(git diff --name-only origin/main)
+          CHANGED_FILES=$(git diff --name-only origin/master)
           echo "Changed files: $CHANGED_FILES"
 
           # 定义微服务目录
@@ -39,11 +39,14 @@ jobs:
             fi
           done
           
-          # 输出变更的服务
+          # 如果没有检测到变更的服务，给一个默认值（空服务）
+          if [ ${#changed_services[@]} -eq 0 ]; then
+            changed_services+=("no-changes")
+          fi
+
+          # 输出变更的服务，作为 JSON 字符串
           echo "Changed services: ${changed_services[@]}"
-          
-          # 将有变更的服务列表传递给下一个步骤
-          echo "::set-output name=changed::${changed_services[@]}"
+          echo "::set-output name=changed::$(echo ${changed_services[@]} | jq -R -s -c 'split(" ")')"
 
   build-and-push:
     needs: detect-changes
@@ -56,6 +59,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Build and push Docker image
+        if: matrix.service != 'no-changes'
         run: |
           # 去掉 'newbee-mall-cloud' 前缀，并根据服务名称调整镜像命名
           IMAGE_NAME=$(echo ${{ matrix.service }} | sed 's/newbee-mall-cloud-//')
