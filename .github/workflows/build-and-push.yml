@@ -3,7 +3,7 @@ name: Cloud Native CI/CD
 on:
   push:
     branches:
-      - main  # 修改为监听 main 分支
+      - main  # 监听 main 分支
 
 jobs:
   detect-changes:
@@ -49,7 +49,7 @@ jobs:
           echo "Changed services: ${changed_services[@]}"
           echo "::set-output name=changed::$(echo ${changed_services[@]} | jq -R -s -c 'split(" ")')"
 
-  build-and-push:
+  maven-build:
     needs: detect-changes
     runs-on: ubuntu-latest
     strategy:
@@ -71,10 +71,21 @@ jobs:
           cd ./newbee-mall-cloud/${{ matrix.service }}
           mvn clean package -DskipTests
 
+  docker-build-and-push:
+    needs: maven-build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        service: ${{ fromJson(needs.maven-build.outputs.services-changed) }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
       - name: Build and push Docker image
         run: |
-          # 使用参数展开移除 'newbee-mall-cloud' 前缀
-          IMAGE_NAME=${{ matrix.service#newbee-mall-cloud- }}
+          # 使用 Bash 的参数展开移除 'newbee-mall-cloud' 前缀
+          IMAGE_NAME=${{ matrix.service }}
+          IMAGE_NAME=${IMAGE_NAME#newbee-mall-cloud-}
           
           # 构建变更的服务镜像并推送到 DockerHub
           docker build -t roderickyoung/shopease:${IMAGE_NAME}-1.0.0 ./newbee-mall-cloud/${{ matrix.service }}
