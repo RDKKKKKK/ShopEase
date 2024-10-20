@@ -82,7 +82,7 @@ seata:
   application-id: shopcart-server
   tx-service-group: ${SEATA_TX_GROUP:newbee_cloud_save_order_group}
   registry:
-    type: kubernetes  # 使用 Kubernetes 服务发现
+    type: file  # 使用 Kubernetes 服务发现
   service:
     vgroupMapping:
       newbee_cloud_save_order_group: "default"
