@@ -30,9 +30,7 @@ jobs:
           # 进入相应服务目录，先构建 API 模块，再构建 WEB 模块
           cd ./${{ matrix.service }}
           
-          # 先构建 api 模块，再构建 web 模块，确保构建顺序
-          mvn clean install -pl ${{ matrix.service }}-api -am -DskipTests
-          mvn clean package -pl ${{ matrix.service }}-web -DskipTests
+          mvn clean package ${{ matrix.service }} -DskipTests
 
   docker-build-and-push:
     needs: maven-build
