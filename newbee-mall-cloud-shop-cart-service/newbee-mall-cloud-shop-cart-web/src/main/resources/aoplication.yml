@@ -82,14 +82,12 @@ seata:
   application-id: shopcart-server
   tx-service-group: ${SEATA_TX_GROUP:newbee_cloud_save_order_group}
   registry:
-    type: nacos
-    nacos:
-      application: seata-server
-      server-addr: ${SEATA_NACOS_SERVER_ADDR:127.0.0.1:8848}
-      username: ${SEATA_NACOS_USERNAME:nacos}
-      password: ${SEATA_NACOS_PASSWORD:nacos}
-      group: DEFAULT_GROUP
-      cluster: default
+    type: kubernetes  # 使用 Kubernetes 服务发现
+  service:
+    vgroupMapping.newbee_cloud_save_order_group: "default"
+    grouplist: seata-server.default.svc.cluster.local:8091  # Kubernetes服务地址
+    enable-degrade: false
+    disable-global-transaction: false
 
 # 日志级别
 logging:

@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@FeignClient(value = "newbee-mall-cloud-shop-cart-service", path = "/shop-cart")
+@FeignClient(value = "shop-cart-service", path = "/shop-cart")
 public interface NewBeeCloudShopCartServiceFeign {
 
     @GetMapping(value = "/listByCartItemIds")
