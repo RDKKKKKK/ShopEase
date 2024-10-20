@@ -1,0 +1,79 @@
+server:
+  port: ${SERVER_PORT:29030}  # 默认端口可以通过环境变量 SERVER_PORT 配置
+
+spring:
+  application:
+    name: ${APPLICATION_NAME:newbee-mall-cloud-shop-cart-service}
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${NACOS_SERVER_ADDR:127.0.0.1:8848}  # Nacos地址，使用环境变量 NACOS_SERVER_ADDR
+      username: ${NACOS_USERNAME:nacos}  # Nacos登录用户名
+      password: ${NACOS_PASSWORD:nacos}  # Nacos登录密码
+
+    sentinel:
+      transport:
+        port: ${SENTINEL_PORT:8930}
+        clientIp: ${SENTINEL_CLIENT_IP:127.0.0.1}
+        dashboard: ${SENTINEL_DASHBOARD:127.0.0.1:9113}
+
+  datasource:
+    name: ${DATASOURCE_NAME:newbee-mall-cloud-shop-cart-datasource}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${DATASOURCE_URL:jdbc:mysql://localhost:3306/newbee_mall_cloud_cart_db?useUnicode=true&serverTimezone=Asia/Shanghai&characterEncoding=utf8&autoReconnect=true&useSSL=false&allowMultiQueries=true}
+    username: ${DATASOURCE_USERNAME:root}
+    password: ${DATASOURCE_PASSWORD:123456}
+    type: com.alibaba.druid.pool.DruidDataSource
+    initialSize: 10
+    minIdle: 5
+    maxActive: 30
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+
+  sleuth:
+    sampler:
+      probability: 1.0
+      rate: 500
+
+  zipkin:
+    base-url: ${ZIPKIN_BASE_URL:http://localhost:9411}
+
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 2000
+        readTimeout: 5000
+  compression:
+    request:
+      enabled: true
+      mime-types: text/xml,application/xml,application/json
+      min-request-size: 1024
+    response:
+      enabled: true
+
+seata:
+  enabled: true
+  application-id: ${SEATA_APPLICATION_ID:shopcart-server}
+  tx-service-group: ${SEATA_TX_GROUP:newbee_cloud_save_order_group}
+  registry:
+    type: nacos
+    nacos:
+      application: seata-server
+      server-addr: ${NACOS_SERVER_ADDR:127.0.0.1:8848}
+      username: ${NACOS_USERNAME:nacos}
+      password: ${NACOS_PASSWORD:nacos}
+      group: DEFAULT_GROUP
+      cluster: default
+  service:
+    vgroupMapping:
+      ${SEATA_TX_GROUP:newbee_cloud_save_order_group}: default

@@ -1,0 +1,2 @@
+docker build -t roderickyoung/shop-ease:user-service -f ./newbee-mall-cloud-user-service/Dockerfile .
+docker push roderickyoung/shop-ease:user-service

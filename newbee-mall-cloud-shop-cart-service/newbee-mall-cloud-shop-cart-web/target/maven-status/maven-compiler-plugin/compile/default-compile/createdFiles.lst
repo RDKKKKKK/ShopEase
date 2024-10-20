@@ -1,0 +1,16 @@
+ltd/shopcart/cloud/newbee/dao/NewBeeMallShoppingCartItemMapper.class
+ltd/shopcart/cloud/newbee/config/handler/TokenToMallUserMethodArgumentResolver.class
+ltd/shopcart/cloud/newbee/config/annotation/TokenToMallUser.class
+ltd/shopcart/cloud/newbee/controller/vo/NewBeeMallShoppingCartItemVO.class
+ltd/shopcart/cloud/newbee/controller/param/UpdateCartItemParam.class
+ltd/shopcart/cloud/newbee/config/SeataProxyConfiguration.class
+ltd/shopcart/cloud/newbee/config/ShopCartServiceWebMvcConfigurer.class
+ltd/shopcart/cloud/newbee/controller/NewBeeMallShoppingCartController.class
+ltd/shopcart/cloud/newbee/config/ShopCartServiceExceptionHandler.class
+ltd/shopcart/cloud/newbee/service/NewBeeMallShoppingCartService.class
+ltd/shopcart/cloud/newbee/service/impl/NewBeeMallShoppingCartServiceImpl.class
+ltd/shopcart/cloud/newbee/controller/param/SaveCartItemParam.class
+ltd/shopcart/cloud/newbee/NewBeeMallCloudShopCartServiceApplication.class
+ltd/shopcart/cloud/newbee/config/ShopCartServiceSwagger3Config.class
+ltd/shopcart/cloud/newbee/entity/NewBeeMallShoppingCartItem.class
+ltd/shopcart/cloud/newbee/config/OpenFeignConfiguration.class

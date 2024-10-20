@@ -1,0 +1,4 @@
+ltd/goods/cloud/newbee/dto/UpdateStockNumDTO.class
+ltd/goods/cloud/newbee/dto/StockNumDTO.class
+ltd/goods/cloud/newbee/openfeign/NewBeeCloudGoodsServiceFeign.class
+ltd/goods/cloud/newbee/dto/NewBeeMallGoodsDTO.class
