@@ -1,9 +1,9 @@
-name: Microservices CI/CD
+name: build-and-push
 
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   detect-changes:
