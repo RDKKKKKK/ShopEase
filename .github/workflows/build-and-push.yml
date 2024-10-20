@@ -18,7 +18,7 @@ jobs:
         id: changed-services
         run: |
           # 获取变更文件
-          CHANGED_FILES=$(git diff --name-only origin/master)
+          CHANGED_FILES=$(git diff --name-only origin/main)
           echo "Changed files: $CHANGED_FILES"
 
           # 定义微服务目录
