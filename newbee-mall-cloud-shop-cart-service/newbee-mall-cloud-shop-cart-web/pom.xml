@@ -139,7 +139,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>ltd.user.cloud.newbee.NewBeeMallCloudShopCartServiceApplication</mainClass> <!-- 指定主类 -->
+                    <mainClass>ltd.shopcart.cloud.newbee.NewBeeMallCloudShopCartServiceApplication</mainClass> <!-- 指定主类 -->
                 </configuration>
             </plugin>
         </plugins>
