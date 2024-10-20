@@ -6,53 +6,15 @@ on:
       - main  # 监听 main 分支
 
 jobs:
-  detect-changes:
-    runs-on: ubuntu-latest
-    outputs:
-      services-changed: ${{ steps.changed-services.outputs.changed }}
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Detect changed services
-        id: changed-services
-        run: |
-          # 获取变更文件
-          CHANGED_FILES=$(git diff --name-only origin/main)
-          echo "Changed files: $CHANGED_FILES"
-
-          # 定义微服务目录
-          services=("newbee-mall-cloud-shop-cart-service" 
-                    "newbee-mall-cloud-user-service" 
-                    "newbee-mall-cloud-order-service"
-                    "newbee-mall-cloud-recommend-service"
-                    "newbee-mall-cloud-goods-service")
-
-          # 初始化一个空数组存放有变更的服务
-          changed_services=()
-          
-          # 检查变更文件是否属于某个服务
-          for service in "${services[@]}"; do
-            if echo "$CHANGED_FILES" | grep -q "$service/"; then
-              changed_services+=("$service")
-            fi
-          done
-          
-          # 如果没有检测到变更的服务，给一个默认值（空服务），防止解析失败
-          if [ ${#changed_services[@]} -eq 0 ]; then
-            echo "::set-output name=changed::null"
-          else
-            # 输出变更的服务，作为 JSON 字符串
-            echo "::set-output name=changed::$(echo ${changed_services[@]} | jq -R -s -c 'split(" ")')"
-          fi
-
   maven-build:
-    needs: detect-changes
     runs-on: ubuntu-latest
-    if: needs.detect-changes.outputs.services-changed != 'null'  # 只有检测到变化时才执行
     strategy:
       matrix:
-        service: ${{ fromJson(needs.detect-changes.outputs.services-changed) }}
+        service: ["newbee-mall-cloud-shop-cart-service",
+                  "newbee-mall-cloud-user-service",
+                  "newbee-mall-cloud-order-service",
+                  "newbee-mall-cloud-recommend-service",
+                  "newbee-mall-cloud-goods-service"]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -72,10 +34,13 @@ jobs:
   docker-build-and-push:
     needs: maven-build
     runs-on: ubuntu-latest
-    if: needs.detect-changes.outputs.services-changed != 'null'  # 只有检测到变化时才执行
     strategy:
       matrix:
-        service: ${{ fromJson(needs.maven-build.outputs.services-changed) }}
+        service: ["newbee-mall-cloud-shop-cart-service",
+                  "newbee-mall-cloud-user-service",
+                  "newbee-mall-cloud-order-service",
+                  "newbee-mall-cloud-recommend-service",
+                  "newbee-mall-cloud-goods-service"]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
