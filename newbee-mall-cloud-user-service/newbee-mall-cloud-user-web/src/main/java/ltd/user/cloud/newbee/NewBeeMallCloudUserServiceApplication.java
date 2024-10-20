@@ -19,6 +19,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @MapperScan("ltd.user.cloud.newbee.dao")
 public class NewBeeMallCloudUserServiceApplication {
 
+
     public static void main(String[] args) {
         System.setProperty("nacos.logging.default.config.enabled","false");
         SpringApplication.run(NewBeeMallCloudUserServiceApplication.class, args);

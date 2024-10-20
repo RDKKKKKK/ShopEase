@@ -23,11 +23,10 @@ jobs:
 
           # 定义微服务目录
           services=("newbee-mall-cloud-shop-cart-service" 
-                    "newbee-mall-cloud-shop-cart-api" 
-                    "newbee-mall-cloud-shop-cart-web"
-                    "newbee-mall-cloud-gateway-admin"
-                    "newbee-mall-cloud-goods-service"
-                    "newbee-mall-cloud-order-service")
+                    "newbee-mall-cloud-user-service" 
+                    "newbee-mall-cloud-order-service"
+                    "newbee-mall-cloud-recommend-service"
+                    "newbee-mall-cloud-goods-service")
 
           # 初始化一个空数组存放有变更的服务
           changed_services=()
