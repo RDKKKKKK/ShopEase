@@ -28,7 +28,7 @@ jobs:
       - name: Maven build
         run: |
           # 进入相应服务目录，执行 Maven 打包
-          cd ./newbee-mall-cloud/${{ matrix.service }}
+          cd ./${{ matrix.service }}
           mvn clean package -DskipTests
 
   docker-build-and-push:
