@@ -1,5 +1,5 @@
 server:
-  port: ${SERVER_PORT:29000}  # 服务端口，可通过环境变量动态配置，默认29000
+  port: ${SERVER_PORT:29020}  # 服务端口，可通过环境变量动态配置，默认29000
 
 spring:
   application:
@@ -7,7 +7,7 @@ spring:
   cloud:
     sentinel:
       transport:
-        port: 8920
+        port: 29020
         clientIp: 127.0.0.1
         dashboard: ${SENTINEL_DASHBOARD:127.0.0.1:9113}  # Sentinel控制台地址
   sleuth:

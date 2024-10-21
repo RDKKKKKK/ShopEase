@@ -16,12 +16,12 @@ spec:
     spec:
       containers:
         - name: recommend-service
-          image: roderickyoung/recommend-service:lastest  # 请替换为你的镜像地址
+          image: roderickyoung/shopease:recommend-service-1.0.0
           ports:
-            - containerPort: 8080  # 容器内的应用服务端口
+            - containerPort: 29020  # 容器内的应用服务端口
           env:
             - name: SERVER_PORT
-              value: "29000"  # 服务端口
+              value: "8920"  # 服务端口
             - name: DB_HOST
               value: "mysql"  # Kubernetes 中 MySQL 的服务名称
             - name: DB_PORT

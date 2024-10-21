@@ -1,0 +1,46 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: swagger-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /swagger-ui/index.html  # 将路径重写为服务内部的路径
+spec:
+  ingressClassName: nginx
+  rules:
+    - http:
+        paths:
+          - path: /user/swagger
+            pathType: Prefix
+            backend:
+              service:
+                name: user-service  # Kubernetes中的user服务
+                port:
+                  number: 29000
+          - path: /goods/swagger
+            pathType: Prefix
+            backend:
+              service:
+                name: goods-service  # Kubernetes中的goods服务
+                port:
+                  number: 29010
+          - path: /order/swagger
+            pathType: Prefix
+            backend:
+              service:
+                name: order-service  # Kubernetes中的order服务
+                port:
+                  number: 29040
+          - path: /shopcart/swagger
+            pathType: Prefix
+            backend:
+              service:
+                name: shop-cart-service  # Kubernetes中的shop-cart服务
+                port:
+                  number: 29030
+          - path: /recommend/swagger
+            pathType: Prefix
+            backend:
+              service:
+                name: recommend-service  # Kubernetes中的recommend服务
+                port:
+                  number: 29020
