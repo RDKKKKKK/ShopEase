@@ -34,7 +34,8 @@ spec:
               cpu: "2"       # 限制最多使用1核CPU
           volumeMounts:
             - name: elasticsearch-storage
-              mountPath: /usr/share/elasticsearch/data
+                mountPath: /usr/share/elasticsearch/data  # ES数据目录
       volumes:
-        - name: elasticsearch-storage
-          emptyDir: {}  # 临时存储, 可换为持久卷存储 (Persistent Volume)
+        - name: es-storage
+          persistentVolumeClaim:
+            claimName: elasticsearch-pvc
