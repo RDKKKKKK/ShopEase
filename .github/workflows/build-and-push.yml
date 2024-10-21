@@ -32,8 +32,9 @@ jobs:
 
   docker-verification:
     runs-on: ubuntu-latest
-    steps:
+    needs: maven-build  # 依赖 maven-build
 
+    steps:
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
@@ -42,8 +43,9 @@ jobs:
 
   image-build:
     runs-on: ubuntu-latest
-    steps:
+    needs: docker-verification  # 依赖 docker-verification
 
+    steps:
       - name: Build Docker image
         run: |
           docker build -t roderickyoung/shopease:shop-cart-service-1.0.0 newbee-mall-cloud-shop-cart-service
@@ -54,6 +56,8 @@ jobs:
 
   image-push:
     runs-on: ubuntu-latest
+    needs: image-build  # 依赖 image-build
+
     steps:
       - name: Push Docker image
         run: |
