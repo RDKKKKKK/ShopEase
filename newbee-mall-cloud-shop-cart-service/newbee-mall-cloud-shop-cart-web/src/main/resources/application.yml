@@ -25,9 +25,6 @@ spring:
       testOnBorrow: false
       testOnReturn: false
 
-  # MyBatis 配置
-  mybatis:
-    mapper-locations: classpath:mapper/*Mapper.xml
 
   # Redis 配置
   redis:
@@ -60,6 +57,10 @@ spring:
         port: 8930
         clientIp: 127.0.0.1
         dashboard: ${SENTINEL_DASHBOARD:127.0.0.1:9113}  # Sentinel控制台地址
+
+# MyBatis 配置
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
 
 # OpenFeign 配置
 feign:
