@@ -46,6 +46,9 @@ spring:
     base-url: ${ZIPKIN_BASE_URL:http://localhost:9411}  # Zipkin服务地址
 
   cloud:
+    loadbalancer:
+      enabled: false
+
     sentinel:
       transport:
         port: 8900
