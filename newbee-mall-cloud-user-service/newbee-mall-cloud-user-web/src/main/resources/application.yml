@@ -56,6 +56,19 @@ spring:
 mybatis:
   mapper-locations: classpath:mapper/*Mapper.xml
 
+# Feign 配置
+feign:
+  client:
+    config:
+      default:
+        connect-timeout: 5000  # 连接超时时间
+        read-timeout: 5000     # 读取超时时间
+  hystrix:
+    enabled: false  # 禁用熔断器（如不需要）
+
+  logging:
+    level: FULL  # Feign 日志级别
+
 # 日志级别
 logging:
   level:
