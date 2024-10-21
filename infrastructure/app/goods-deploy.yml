@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: goods-service
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: goods-service
+  template:
+    metadata:
+      labels:
+        app: goods-service
+    spec:
+      containers:
+        - name: goods-service
+          image: roderickyoung/shopease:goods-service-1.0.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 29010
+          env:
+            - name: SERVER_PORT
+              value: "29010"  # 服务端口
+            - name: DB_HOST
+              value: "mysql"  # Kubernetes中MySQL的服务名称
+            - name: DB_PORT
+              value: "3306"
+            - name: DB_NAME
+              value: "newbee_mall_cloud_goods_db"
+            - name: DB_USERNAME
+              value: "root"
+            - name: DB_PASSWORD
+              value: "123456"
+            - name: REDIS_HOST
+              value: "redis"  # Kubernetes中Redis的服务名称
+            - name: REDIS_PORT
+              value: "6379"
+            - name: REDIS_PASSWORD
+              value: "123456789"
+            - name: ZIPKIN_BASE_URL
+              value: "http://zipkin:9411"  # Kubernetes中Zipkin的服务地址
+            - name: SENTINEL_DASHBOARD
+              value: "sentinel:9113"  # Kubernetes中Sentinel的服务地址
+            - name: SEATA_TX_GROUP
+              value: "newbee_cloud_save_order_group"  # Seata事务组
+            - name: SEATA_SERVER_ADDR
+              value: "seata-server.default.svc.cluster.local:8091"  # Seata服务地址

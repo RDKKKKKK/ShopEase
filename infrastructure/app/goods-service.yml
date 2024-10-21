@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: goods-service  # 服务的名字
+  labels:
+    app: goods-service
+spec:
+  selector:
+    app: goods-service  # 和 Deployment 中的 label 匹配，选择运行 goods-service 容器的 Pod
+  ports:
+    - name: http
+      protocol: TCP
+      port: 29010  # Kubernetes service 监听的端口，外部流量通过此端口
+      targetPort: 29010  # 容器内部应用程序的端口，应该与环境变量 SERVER_PORT 一致
+  type: ClusterIP  # Service 类型，可根据需求改为 NodePort 或 LoadBalancer

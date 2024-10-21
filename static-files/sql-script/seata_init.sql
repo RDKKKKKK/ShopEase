@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS lock_table (
     transaction_id BIGINT,
     branch_id BIGINT NOT NULL,
     resource_id VARCHAR(256),
-    table_name VARCHAR(32),
+    table_name VARCHAR(128),
     pk VARCHAR(36),
     gmt_create TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
     gmt_modified TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),

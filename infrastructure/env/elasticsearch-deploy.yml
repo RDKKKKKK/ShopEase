@@ -14,6 +14,13 @@ spec:
       labels:
         app: elasticsearch
     spec:
+      initContainers: # 添加 initContainer 来修复权限问题
+        - name: fix-elasticsearch-permissions
+          image: busybox
+          command: [ "sh", "-c", "chown -R 1000:1000 /usr/share/elasticsearch/data" ]
+          volumeMounts:
+            - name: elasticsearch-storage
+              mountPath: /usr/share/elasticsearch/data
       containers:
         - name: elasticsearch
           image: docker.elastic.co/elasticsearch/elasticsearch:7.10.0
@@ -27,15 +34,15 @@ spec:
               value: "-Xms512M -Xmx512M"  # 设置最小和最大JVM内存为1GB
           resources:
             requests:
-              memory: "0.5Gi"  # 请求最少1GB内存
+              memory: "0.5Gi"  # 请求最少0.5GB内存
               cpu: "500m"    # 请求最少0.5核CPU
             limits:
-              memory: "3Gi"  # 限制最多使用2GB内存
-              cpu: "2"       # 限制最多使用1核CPU
+              memory: "3Gi"  # 限制最多使用3GB内存
+              cpu: "2"       # 限制最多使用2核CPU
           volumeMounts:
             - name: elasticsearch-storage
-                mountPath: /usr/share/elasticsearch/data  # ES数据目录
+              mountPath: /usr/share/elasticsearch/data  # ES数据目录
       volumes:
-        - name: es-storage
+        - name: elasticsearch-storage
           persistentVolumeClaim:
             claimName: elasticsearch-pvc

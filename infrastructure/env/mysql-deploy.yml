@@ -23,13 +23,10 @@ spec:
           env:
             - name: MYSQL_ROOT_PASSWORD
               value: "123456"
-            volumeMounts:
-              - name: mysql-storage
-                mountPath: /var/lib/mysql  # MySQL数据目录
+          volumeMounts:
+            - name: mysql-storage
+              mountPath: /var/lib/mysql  # MySQL数据目录
       volumes:
         - name: mysql-storage
           persistentVolumeClaim:
             claimName: mysql-pvc
-
-
-# PVC to be added
