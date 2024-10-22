@@ -9,9 +9,11 @@
 package ltd.order.cloud.newbee.dao;
 
 import ltd.order.cloud.newbee.entity.MallUserAddress;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
+@Mapper
 public interface MallUserAddressMapper {
     int deleteByPrimaryKey(Long addressId);
 

@@ -10,7 +10,9 @@ package ltd.order.cloud.newbee.dao;
 
 
 import ltd.order.cloud.newbee.entity.NewBeeMallOrderAddress;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface NewBeeMallOrderAddressMapper {
     int deleteByPrimaryKey(Long orderId);
 

@@ -9,8 +9,10 @@
 package ltd.user.cloud.newbee.dao;
 
 import ltd.user.cloud.newbee.entity.AdminUser;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+@Mapper
 public interface AdminUserMapper {
 
     int insert(AdminUser record);

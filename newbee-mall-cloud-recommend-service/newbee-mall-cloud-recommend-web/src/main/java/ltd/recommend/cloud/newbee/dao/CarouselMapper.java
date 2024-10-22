@@ -10,10 +10,12 @@ package ltd.recommend.cloud.newbee.dao;
 
 import ltd.common.cloud.newbee.dto.PageQueryUtil;
 import ltd.recommend.cloud.newbee.entity.Carousel;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
+@Mapper
 public interface CarouselMapper {
     int deleteByPrimaryKey(Integer carouselId);
 

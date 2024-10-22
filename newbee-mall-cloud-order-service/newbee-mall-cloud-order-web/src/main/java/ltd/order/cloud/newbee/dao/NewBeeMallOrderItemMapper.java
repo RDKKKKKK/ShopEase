@@ -9,10 +9,12 @@
 package ltd.order.cloud.newbee.dao;
 
 import ltd.order.cloud.newbee.entity.NewBeeMallOrderItem;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
+@Mapper
 public interface NewBeeMallOrderItemMapper {
     int deleteByPrimaryKey(Long orderItemId);
 
