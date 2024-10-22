@@ -64,6 +64,23 @@ feign:
   ribbon:
     enabled: false
 
+# Ribbon 配置，用于负载均衡并指定各个服务的端口
+user-service:
+  ribbon:
+    listOfServers: user-service:29000  # 指定 user-service 的服务名和端口
+
+order-service:
+  ribbon:
+    listOfServers: order-service:29040  # 指定 order-service 的服务名和端口
+
+shop-cart-service:
+  ribbon:
+    listOfServers: shop-cart-service:29030  # 指定 shop-cart-service 的服务名和端口
+
+recommend-service:
+  ribbon:
+    listOfServers: recommend-service:29020  # 指定 recommend-service 的服务名和端口
+
 # Seata 配置
 seata:
   enabled: true
