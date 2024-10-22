@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import ltd.common.cloud.newbee.dto.Result;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(value = "user-service", path = "/users")
+@FeignClient(name = "user-service", path = "/users", url = "http://user-service:29000")
 public interface NewBeeCloudUserServiceFeign {
 
     @GetMapping(value = "/admin/{token}")

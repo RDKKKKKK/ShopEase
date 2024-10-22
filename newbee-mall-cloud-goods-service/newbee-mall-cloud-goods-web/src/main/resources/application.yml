@@ -61,8 +61,6 @@ feign:
         min-request-size: 1024
       response:
         enabled: true
-  ribbon:
-    enabled: false
 
 # Ribbon 配置，用于负载均衡并指定各个服务的端口
 user-service:
