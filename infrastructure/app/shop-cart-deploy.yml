@@ -35,8 +35,6 @@ spec:
               value: "redis"  # Kubernetes中Redis的服务名称
             - name: REDIS_PORT
               value: "6379"
-            - name: REDIS_PASSWORD
-              value: "123456789"
             - name: ZIPKIN_BASE_URL
               value: "http://zipkin:9411"  # Kubernetes中Zipkin的服务地址
             - name: SENTINEL_DASHBOARD

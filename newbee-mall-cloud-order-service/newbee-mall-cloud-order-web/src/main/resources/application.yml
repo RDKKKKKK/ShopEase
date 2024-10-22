@@ -1,5 +1,5 @@
 server:
-  port: ${SERVER_PORT:29040}  # 服务端口，可通过环境变量动态配置，默认29040
+  port: ${SERVER_PORT:29040}
 
 spring:
   application:

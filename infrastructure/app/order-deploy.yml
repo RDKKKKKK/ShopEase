@@ -11,6 +11,7 @@ spec:
     metadata:
       labels:
         app: order-service
+
     spec:
       containers:
         - name: order-service

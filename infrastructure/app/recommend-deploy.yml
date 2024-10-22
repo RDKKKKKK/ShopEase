@@ -21,7 +21,7 @@ spec:
             - containerPort: 29020  # 容器内的应用服务端口
           env:
             - name: SERVER_PORT
-              value: "8920"  # 服务端口
+              value: "29020"  # 服务端口
             - name: DB_HOST
               value: "mysql"  # Kubernetes 中 MySQL 的服务名称
             - name: DB_PORT
