@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@FeignClient(value = "goods-service", path = "/goods", url = "http://goods-service")
+@FeignClient(value = "goods-service", path = "/goods", url = "http://goods-service:29010")
 public interface NewBeeCloudGoodsServiceFeign {
 
     @GetMapping(value = "/admin/goodsDetail")
