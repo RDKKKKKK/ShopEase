@@ -61,6 +61,8 @@ feign:
         min-request-size: 1024
       response:
         enabled: true
+  ribbon:
+    enabled: false  # 禁用 Ribbon
 
 # Seata 配置
 seata:
