@@ -25,10 +25,6 @@ spring:
       testOnBorrow: false
       testOnReturn: false
 
-  # MyBatis 配置
-  mybatis:
-    mapper-locations: classpath:mapper/*Mapper.xml
-
   # Sentinel 配置
   cloud:
     sentinel:
@@ -46,6 +42,10 @@ spring:
     sampler:
       probability: 1.0  # Sleuth 采样率
       rate: 500  # 每秒数据采集量
+
+  # MyBatis 配置
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
 
 # OpenFeign 配置
 feign:
