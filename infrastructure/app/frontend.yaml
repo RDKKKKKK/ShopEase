@@ -5,7 +5,7 @@ metadata:
   labels:
     app: mall-app
 spec:
-  replicas: 1  # Nginx 实例副本数量
+  replicas: 2  # Nginx 实例副本数量
   selector:
     matchLabels:
       app: mall-app
