@@ -44,5 +44,3 @@ spec:
                 name: recommend-service  # Kubernetes中的recommend服务
                 port:
                   number: 29020
-
-                  http://goods-service/goods/admin/goodsDetail?goodsId=10925

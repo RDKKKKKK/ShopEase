@@ -7,7 +7,7 @@ metadata:
 spec:
   ports:
     - port: 29040  # 外部访问的端口
-      targetPort: 8080  # 应用容器的端口
+      targetPort: 29040  # 应用容器的端口
       protocol: TCP
   selector:
     app: order-service
