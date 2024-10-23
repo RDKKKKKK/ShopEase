@@ -10,6 +10,9 @@ spring:
         port: 29020
         clientIp: 127.0.0.1
         dashboard: ${SENTINEL_DASHBOARD:127.0.0.1:9113}  # Sentinel控制台地址
+    loadbalancer:
+      enabled: false
+
   sleuth:
     sampler:
       probability: 1.0  # Sleuth采样率
