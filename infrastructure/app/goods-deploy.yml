@@ -4,7 +4,6 @@ metadata:
   name: goods-service
   namespace: default
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: goods-service

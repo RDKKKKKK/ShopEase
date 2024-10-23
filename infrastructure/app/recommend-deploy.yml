@@ -5,7 +5,6 @@ metadata:
   labels:
     app: recommend-service
 spec:
-  replicas: 1  # 副本数量，可根据需要调整
   selector:
     matchLabels:
       app: recommend-service
