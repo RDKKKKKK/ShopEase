@@ -38,8 +38,8 @@ spec:
               value: "sentinel:9113"  # Sentinel 控制台地址
           resources:
             requests:
-              cpu: "800m"
-              memory: "200Mi"
+              cpu: "400m"
+              memory: "20Mi"
             limits:
               cpu: "1000m"
               memory: "800Mi"

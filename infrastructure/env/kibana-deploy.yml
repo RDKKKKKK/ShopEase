@@ -12,9 +12,29 @@ spec:
       labels:
         app: kibana
     spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - elasticsearch
+                      - logstash
+                      - kibana
+              topologyKey: "kubernetes.io/hostname"
+
       containers:
         - name: kibana
           image: docker.elastic.co/kibana/kibana:7.10.0
+          resources:
+            requests:
+              cpu: "10m"
+              memory: "300Mi"
+            limits:
+              cpu: "50m"
+              memory: "400Mi"
           ports:
             - containerPort: 5601
           env:
