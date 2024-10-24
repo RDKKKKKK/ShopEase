@@ -2,7 +2,7 @@
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: app-hpa
+  name: user-hpa
   namespace: default
 spec:
   scaleTargetRef:
