@@ -18,6 +18,13 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 29010
+          resources:
+            requests:
+              cpu: "300m"
+              memory: "300Mi"
+            limits:
+              cpu: "700m"
+              memory: "700Mi"
           env:
             - name: SERVER_PORT
               value: "29010"  # 服务端口
