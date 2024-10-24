@@ -11,7 +11,7 @@ spec:
     name: user-service
   minReplicas: 1
   maxReplicas: 5
-  targetCPUUtilizationPercentage: 50
+  targetCPUUtilizationPercentage: 40
 
 ---
 # HPA for goods-service
@@ -27,7 +27,7 @@ spec:
     name: goods-service
   minReplicas: 1
   maxReplicas: 5
-  targetCPUUtilizationPercentage: 40
+  targetCPUUtilizationPercentage: 50
 
 ---
 # HPA for order-service
@@ -43,7 +43,7 @@ spec:
     name: order-service
   minReplicas: 1
   maxReplicas: 5
-  targetCPUUtilizationPercentage: 50
+  targetCPUUtilizationPercentage: 40
 
 ---
 # HPA for order-service
@@ -59,7 +59,7 @@ spec:
     name: recommend-service
   minReplicas: 1
   maxReplicas: 5
-  targetCPUUtilizationPercentage: 50
+  targetCPUUtilizationPercentage: 40
 
 
 ---
@@ -76,4 +76,4 @@ spec:
     name: shop-cart-service
   minReplicas: 1
   maxReplicas: 5
-  targetCPUUtilizationPercentage: 50
+  targetCPUUtilizationPercentage: 40

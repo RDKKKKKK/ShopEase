@@ -18,6 +18,13 @@ spec:
         image: hangtang/mall-app:latest # 使用官方 Nginx 镜像
         ports:
         - containerPort: 80  # Nginx 监听的端口
+        resources:
+          requests:
+            cpu: "500m"
+            memory: "400Mi"
+          limits:
+            cpu: "1000m"
+            memory: "800Mi"
 
 ---
 apiVersion: v1

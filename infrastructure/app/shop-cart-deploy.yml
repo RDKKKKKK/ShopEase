@@ -19,11 +19,11 @@ spec:
             - containerPort: 29030
           resources:
             requests:
-              cpu: "300m"
-              memory: "300Mi"
+              cpu: "500m"
+              memory: "400Mi"
             limits:
-              cpu: "700m"
-              memory: "700Mi"
+              cpu: "1000m"
+              memory: "800Mi"
           env:
             - name: SERVER_PORT
               value: "29030"  # 服务端口
