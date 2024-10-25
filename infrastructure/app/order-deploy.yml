@@ -20,10 +20,10 @@ spec:
             - containerPort: 29040
           resources:
             requests:
-              cpu: "800m"
+              cpu: "1000m"
               memory: "200Mi"
             limits:
-              cpu: "1000m"
+              cpu: "1500m"
               memory: "1000Mi"
           env:
             - name: SERVER_PORT

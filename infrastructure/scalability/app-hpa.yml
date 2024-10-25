@@ -10,7 +10,7 @@ spec:
     kind: Deployment
     name: user-service
   minReplicas: 1
-  maxReplicas: 3
+  maxReplicas: 5
   targetCPUUtilizationPercentage: 80
 
 ---

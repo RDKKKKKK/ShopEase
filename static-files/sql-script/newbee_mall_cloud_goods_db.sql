@@ -19,7 +19,7 @@ CREATE TABLE `tb_newbee_mall_goods_category` (
                                                  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
                                                  `update_user` int(11) DEFAULT '0' COMMENT '修改者id',
                                                  PRIMARY KEY (`category_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 
 # 新增商品分类数据
 
@@ -158,7 +158,7 @@ CREATE TABLE `tb_newbee_mall_goods_info` (
                                              `update_user` int(11) NOT NULL DEFAULT '0' COMMENT '修改者主键id',
                                              `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '商品修改时间',
                                              PRIMARY KEY (`goods_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 
 # 新增商品表数据
 INSERT INTO tb_newbee_mall_goods_info
