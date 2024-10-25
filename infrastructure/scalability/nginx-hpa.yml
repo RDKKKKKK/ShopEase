@@ -8,5 +8,5 @@ spec:
     kind: Deployment
     name: mall-app-deployment
   minReplicas: 1
-  maxReplicas: 5
+  maxReplicas: 3
   targetCPUUtilizationPercentage: 60

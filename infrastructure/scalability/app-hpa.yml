@@ -10,7 +10,7 @@ spec:
     kind: Deployment
     name: user-service
   minReplicas: 1
-  maxReplicas: 5
+  maxReplicas: 3
   targetCPUUtilizationPercentage: 80
 
 ---
@@ -26,7 +26,7 @@ spec:
     kind: Deployment
     name: goods-service
   minReplicas: 1
-  maxReplicas: 5
+  maxReplicas: 3
   targetCPUUtilizationPercentage: 80
 
 ---
@@ -42,7 +42,7 @@ spec:
     kind: Deployment
     name: order-service
   minReplicas: 1
-  maxReplicas: 5
+  maxReplicas: 3
   targetCPUUtilizationPercentage: 80
 
 ---
@@ -58,7 +58,7 @@ spec:
     kind: Deployment
     name: recommend-service
   minReplicas: 1
-  maxReplicas: 5
+  maxReplicas: 3
   targetCPUUtilizationPercentage: 80
 
 
@@ -75,5 +75,5 @@ spec:
     kind: Deployment
     name: shop-cart-service
   minReplicas: 1
-  maxReplicas: 5
+  maxReplicas: 3
   targetCPUUtilizationPercentage: 80
