@@ -42,7 +42,7 @@ spec:
     kind: Deployment
     name: order-service
   minReplicas: 1
-  maxReplicas: 3
+  maxReplicas: 5
   targetCPUUtilizationPercentage: 80
 
 ---

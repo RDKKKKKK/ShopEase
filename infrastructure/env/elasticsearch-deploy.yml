@@ -21,18 +21,7 @@ spec:
           volumeMounts:
             - name: elasticsearch-storage
               mountPath: /usr/share/elasticsearch/data
-      affinity:
-        podAntiAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            - labelSelector:
-                matchExpressions:
-                  - key: app
-                    operator: In
-                    values:
-                      - elasticsearch
-                      - logstash
-                      - kibana
-              topologyKey: "kubernetes.io/hostname"
+
       containers:
         - name: elasticsearch
           image: docker.elastic.co/elasticsearch/elasticsearch:7.10.0

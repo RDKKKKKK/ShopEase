@@ -20,10 +20,10 @@ spec:
           resources:
             requests:
               cpu: "100m"
-              memory: "0Mi"
+              memory: "200Mi"
             limits:
               cpu: "1000m"
-              memory: "800Mi"
+              memory: "1000Mi"
           env:
             - name: SERVER_PORT
               value: "29000"  # 服务端口

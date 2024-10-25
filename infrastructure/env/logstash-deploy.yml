@@ -12,18 +12,7 @@ spec:
       labels:
         app: logstash
     spec:
-      affinity:
-        podAntiAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            - labelSelector:
-                matchExpressions:
-                  - key: app
-                    operator: In
-                    values:
-                      - elasticsearch
-                      - logstash
-                      - kibana
-              topologyKey: "kubernetes.io/hostname"
+
       containers:
         - name: logstash
           image: docker.elastic.co/logstash/logstash:7.10.0
@@ -45,6 +34,7 @@ spec:
                 }
                 stdout { codec => rubydebug }
               }
+
           resources:
             requests:
               cpu: "30m"

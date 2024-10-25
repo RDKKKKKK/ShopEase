@@ -12,18 +12,7 @@ spec:
       labels:
         app: kibana
     spec:
-      affinity:
-        podAntiAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            - labelSelector:
-                matchExpressions:
-                  - key: app
-                    operator: In
-                    values:
-                      - elasticsearch
-                      - logstash
-                      - kibana
-              topologyKey: "kubernetes.io/hostname"
+
 
       containers:
         - name: kibana
