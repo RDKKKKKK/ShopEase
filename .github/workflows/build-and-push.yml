@@ -27,11 +27,12 @@ jobs:
           distribution: 'adopt'
 
   quality-test:
+    needs: setup
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Install Snyk CLI
         run: npm install -g snyk
@@ -48,7 +49,7 @@ jobs:
 
   maven-build:
     runs-on: ubuntu-latest
-    needs: setup
+    needs: quality-test
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
