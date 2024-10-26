@@ -13,17 +13,17 @@ public enum ServiceResultEnum {
 
     SUCCESS("success"),
 
-    DATA_NOT_EXIST("未查询到记录！"),
+    DATA_NOT_EXIST("No Records！"),
 
-    PARAM_ERROR("参数错误！"),
+    PARAM_ERROR("Param Error！"),
 
-    SAME_CATEGORY_EXIST("已存在同级同名的分类！"),
+    SAME_CATEGORY_EXIST("Category Existed！"),
 
-    SAME_LOGIN_NAME_EXIST("用户名已存在！"),
+    SAME_LOGIN_NAME_EXIST("User Existed！"),
 
     LOGIN_NAME_NULL("请输入登录名！"),
 
-    LOGIN_NAME_IS_NOT_PHONE("请输入正确的手机号！"),
+    LOGIN_NAME_IS_NOT_PHONE("Please Enter Correct Username！"),
 
     LOGIN_PASSWORD_NULL("请输入密码！"),
 
@@ -33,61 +33,61 @@ public enum ServiceResultEnum {
 
     SAME_INDEX_CONFIG_EXIST("已存在相同的首页配置项！"),
 
-    GOODS_CATEGORY_ERROR("分类数据异常！"),
+    GOODS_CATEGORY_ERROR("Category Exception!"),
 
-    SAME_GOODS_EXIST("已存在相同的商品信息！"),
+    SAME_GOODS_EXIST("Product Existed！"),
 
-    GOODS_NOT_EXIST("商品不存在！"),
+    GOODS_NOT_EXIST("Product Not Exist！"),
 
-    GOODS_PUT_DOWN("商品已下架！"),
+    GOODS_PUT_DOWN("Product Removed！"),
 
-    SHOPPING_CART_ITEM_LIMIT_NUMBER_ERROR("超出单个商品的最大购买数量！"),
+    SHOPPING_CART_ITEM_LIMIT_NUMBER_ERROR("Exceeding the maximum purchase quantity for a single item！"),
 
-    SHOPPING_CART_ITEM_NUMBER_ERROR("商品数量不能小于 1 ！"),
+    SHOPPING_CART_ITEM_NUMBER_ERROR("The number of products cannot be less than 1！"),
 
-    SHOPPING_CART_ITEM_TOTAL_NUMBER_ERROR("超出购物车最大容量！"),
+    SHOPPING_CART_ITEM_TOTAL_NUMBER_ERROR("Exceeding the maximum capacity of the shopping cart！"),
 
-    SHOPPING_CART_ITEM_EXIST_ERROR("已存在！无需重复添加！"),
+    SHOPPING_CART_ITEM_EXIST_ERROR("Already exists! No need to add repeatedly！"),
 
-    LOGIN_ERROR("登录失败！"),
+    LOGIN_ERROR("Login Failure！"),
 
-    NOT_LOGIN_ERROR("未登录！"),
+    NOT_LOGIN_ERROR("Not logged in！"),
 
-    ADMIN_NOT_LOGIN_ERROR("管理员未登录！"),
+    ADMIN_NOT_LOGIN_ERROR("Administrator not logged in！"),
 
-    TOKEN_EXPIRE_ERROR("无效认证！请重新登录！"),
+    TOKEN_EXPIRE_ERROR("Invalid authentication! Please log in again！"),
 
-    ADMIN_TOKEN_EXPIRE_ERROR("管理员登录过期！请重新登录！"),
+    ADMIN_TOKEN_EXPIRE_ERROR("Administrator login expired! Please re-login！"),
 
-    USER_NULL_ERROR("无效用户！请重新登录！"),
+    USER_NULL_ERROR("Invalid user! Please log in again！"),
 
-    LOGIN_USER_LOCKED_ERROR("用户已被禁止登录！"),
+    LOGIN_USER_LOCKED_ERROR("User has been banned from logging in！"),
 
-    ORDER_NOT_EXIST_ERROR("订单不存在！"),
+    ORDER_NOT_EXIST_ERROR("Order does not exist！"),
 
-    ORDER_ITEM_NOT_EXIST_ERROR("订单项不存在！"),
+    ORDER_ITEM_NOT_EXIST_ERROR("Order item does not exist！"),
 
     NULL_ADDRESS_ERROR("地址不能为空！"),
 
-    ORDER_PRICE_ERROR("订单价格异常！"),
+    ORDER_PRICE_ERROR("Order price anomalies！"),
 
-    ORDER_ITEM_NULL_ERROR("订单项异常！"),
+    ORDER_ITEM_NULL_ERROR("Order Item Exception！"),
 
-    ORDER_GENERATE_ERROR("生成订单异常！"),
+    ORDER_GENERATE_ERROR("Generate order exceptions！"),
 
-    SHOPPING_ITEM_ERROR("购物车数据异常！"),
+    SHOPPING_ITEM_ERROR("Shopping Cart Data Exception！"),
 
-    SHOPPING_ITEM_COUNT_ERROR("库存不足！"),
+    SHOPPING_ITEM_COUNT_ERROR("Insufficient inventory！"),
 
-    ORDER_STATUS_ERROR("订单状态异常！"),
+    ORDER_STATUS_ERROR("Order Status Exception！"),
 
-    OPERATE_ERROR("操作失败！"),
+    OPERATE_ERROR("Failure of an operation！"),
 
-    REQUEST_FORBIDEN_ERROR("禁止该操作！"),
+    REQUEST_FORBIDEN_ERROR("Disable this operation！"),
 
-    NO_PERMISSION_ERROR("无权限！"),
+    NO_PERMISSION_ERROR("No entitlement！"),
 
-    DB_ERROR("database error");
+    DB_ERROR("Database error");
 
     private String result;
 

@@ -26,7 +26,7 @@ kind: Service
 metadata:
   name: mall-admin-external
 spec:
-  type: LoadBalancer  # 选择 LoadBalancer 或 NodePort
+  type: LoadBalancer  # 选择 LoadBalancer
   selector:
     admin: mall-admin
   ports:
