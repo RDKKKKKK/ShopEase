@@ -86,3 +86,10 @@ logging:
       goods:
         cloud:
           newbee: debug  # 设置为debug级别
+# Aliyun OSS Configuration
+aliyun:
+  oss:
+    end-point: oss-ap-southeast-1.aliyuncs.com
+    key-id: ${ALIYUN_OSS_KEY_ID}
+    key-secret: ${ALIYUN_OSS_KEY_SECRET}
+    bucket-name: shopease-mall

@@ -52,3 +52,13 @@ spec:
               value: "newbee_cloud_save_order_group"  # Seata事务组
             - name: SEATA_SERVER_ADDR
               value: "seata-server.default.svc.cluster.local:8091"  # Seata服务地址
+            - name: ALIYUN_OSS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: aliyun-oss-credentials
+                  key: access-key-id
+            - name: ALIYUN_OSS_KEY_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: aliyun-oss-credentials
+                  key: access-key-secret
