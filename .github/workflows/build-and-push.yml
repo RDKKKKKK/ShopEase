@@ -44,7 +44,7 @@ jobs:
 
       - name: Run Snyk to check for vulnerabilities
         run: |
-          cd back-end
+          cd newbee-mall-cloud-common
           snyk test --severity-threshold=high || true
 
   maven-build:
