@@ -13,7 +13,6 @@ spec:
         app: kibana
     spec:
 
-
       containers:
         - name: kibana
           image: docker.elastic.co/kibana/kibana:7.10.0
@@ -22,8 +21,8 @@ spec:
               cpu: "10m"
               memory: "300Mi"
             limits:
-              cpu: "50m"
-              memory: "400Mi"
+              cpu: "100m"
+              memory: "800Mi"
           ports:
             - containerPort: 5601
           env:
