@@ -44,7 +44,7 @@ public class AdminUserServiceImpl implements AdminUserService {
             setToken.set(token, adminUserToken, 2 * 24 * 60 * 60, TimeUnit.SECONDS);//过期时间 48 小时
             return token;
         }
-        return "登录失败";
+        return "Login Failed!";
     }
 
 
