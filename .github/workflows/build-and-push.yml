@@ -27,7 +27,6 @@ jobs:
           distribution: 'adopt'
 
   quality-test:
-    needs: test
     runs-on: ubuntu-latest
 
     steps:
