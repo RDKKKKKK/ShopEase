@@ -17,6 +17,8 @@ spec:
         - name: recommend-service
           image: roderickyoung/shopease:recommend-service-1.0.0
           imagePullPolicy: Always
+
+
           ports:
             - containerPort: 29020  # 容器内的应用服务端口
           env:
