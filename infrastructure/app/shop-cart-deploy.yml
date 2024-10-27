@@ -22,7 +22,7 @@ spec:
               cpu: "1000m"
               memory: "200Mi"
             limits:
-              cpu: "1500m"
+              cpu: "1600m"
               memory: "800Mi"
           env:
             - name: SERVER_PORT
