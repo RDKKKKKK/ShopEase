@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import ltd.common.cloud.shopease.dto.Result;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
+// Feign client used by multiple services
 @FeignClient(name = "user-service", path = "/users", url = "http://user-service:29000")
 public interface ShopEaseCloudUserServiceFeign {
 
