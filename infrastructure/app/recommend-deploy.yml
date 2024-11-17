@@ -29,7 +29,7 @@ spec:
             - name: DB_PORT
               value: "3306"
             - name: DB_NAME
-              value: "newbee_mall_cloud_recommend_db"  # 数据库名称
+              value: "shopease_mall_cloud_recommend_db"  # 数据库名称
             - name: DB_USERNAME
               value: "root"  # 数据库用户名
             - name: DB_PASSWORD

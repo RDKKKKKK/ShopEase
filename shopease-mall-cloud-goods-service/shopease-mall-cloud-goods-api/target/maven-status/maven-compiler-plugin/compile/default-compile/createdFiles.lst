@@ -1,0 +1,4 @@
+ltd/goods/cloud/shopease/dto/StockNumDTO.class
+ltd/goods/cloud/shopease/dto/ShopEaseMallGoodsDTO.class
+ltd/goods/cloud/shopease/dto/UpdateStockNumDTO.class
+ltd/goods/cloud/shopease/openfeign/ShopEaseCloudGoodsServiceFeign.class

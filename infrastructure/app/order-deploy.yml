@@ -33,7 +33,7 @@ spec:
             - name: DB_PORT
               value: "3306"
             - name: DB_NAME
-              value: "newbee_mall_cloud_order_db"
+              value: "shopease_mall_cloud_order_db"
             - name: DB_USERNAME
               value: "root"
             - name: DB_PASSWORD
@@ -49,4 +49,4 @@ spec:
             - name: SENTINEL_DASHBOARD
               value: "sentinel:9113"  # Kubernetes中Sentinel的服务地址
             - name: SEATA_TX_GROUP
-              value: "newbee_cloud_save_order_group"  # Seata事务组
+              value: "shopease_cloud_save_order_group"  # Seata事务组

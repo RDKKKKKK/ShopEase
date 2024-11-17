@@ -1,0 +1,16 @@
+ltd/shopcart/cloud/shopease/config/ShopCartServiceWebMvcConfigurer.class
+ltd/shopcart/cloud/shopease/config/OpenFeignConfiguration.class
+ltd/shopcart/cloud/shopease/config/SeataProxyConfiguration.class
+ltd/shopcart/cloud/shopease/config/annotation/TokenToMallUser.class
+ltd/shopcart/cloud/shopease/dao/ShopEaseMallShoppingCartItemMapper.class
+ltd/shopcart/cloud/shopease/config/ShopCartServiceExceptionHandler.class
+ltd/shopcart/cloud/shopease/controller/ShopEaseMallShoppingCartController.class
+ltd/shopcart/cloud/shopease/config/ShopCartServiceSwagger3Config.class
+ltd/shopcart/cloud/shopease/config/handler/TokenToMallUserMethodArgumentResolver.class
+ltd/shopcart/cloud/shopease/controller/vo/ShopEaseMallShoppingCartItemVO.class
+ltd/shopcart/cloud/shopease/controller/param/SaveCartItemParam.class
+ltd/shopcart/cloud/shopease/service/ShopEaseMallShoppingCartService.class
+ltd/shopcart/cloud/shopease/controller/param/UpdateCartItemParam.class
+ltd/shopcart/cloud/shopease/ShopEaseMallCloudShopCartServiceApplication.class
+ltd/shopcart/cloud/shopease/entity/ShopEaseMallShoppingCartItem.class
+ltd/shopcart/cloud/shopease/service/impl/ShopEaseMallShoppingCartServiceImpl.class
