@@ -38,11 +38,11 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t roderickyoung/shopease:shop-cart-service-1.0.0 newbee-mall-cloud-shop-cart-service
-          docker build -t roderickyoung/shopease:user-service-1.0.0 newbee-mall-cloud-user-service
-          docker build -t roderickyoung/shopease:order-service-1.0.0 newbee-mall-cloud-order-service
-          docker build -t roderickyoung/shopease:recommend-service-1.0.0 newbee-mall-cloud-recommend-service
-          docker build -t roderickyoung/shopease:goods-service-1.0.0 newbee-mall-cloud-goods-service
+          docker build -t roderickyoung/shopease:shop-cart-service-1.0.0 shopease-mall-cloud-shop-cart-service
+          docker build -t roderickyoung/shopease:user-service-1.0.0 shopease-mall-cloud-user-service
+          docker build -t roderickyoung/shopease:order-service-1.0.0 shopease-mall-cloud-order-service
+          docker build -t roderickyoung/shopease:recommend-service-1.0.0 shopease-mall-cloud-recommend-service
+          docker build -t roderickyoung/shopease:goods-service-1.0.0 shopease-mall-cloud-goods-service
 
       - name: Push Docker image
         run: |
