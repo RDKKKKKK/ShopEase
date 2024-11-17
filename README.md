@@ -1,4 +1,4 @@
-# ShopEase: A Cloud Native Online E-Commerce Platform Solution
+# ShopEase: A Cloud Native Online E-Commerce Solution
 
 ![System Architecture](static-files/arch-imgs/platform_architecture.png)
 
