@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: recommend-service
+  name:  metrics-service #recommend-service
   labels:
     app: recommend-service
 spec:

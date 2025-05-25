@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: shop-cart-service
+  name: dashboard-service
 spec:
   selector:
     matchLabels:

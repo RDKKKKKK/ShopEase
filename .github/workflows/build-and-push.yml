@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main  # 监听 main 分支
+      - jms-test
 
 jobs:
   maven-build:

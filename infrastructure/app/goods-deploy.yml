@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: goods-service
+  name:  metadata-service #goods-service
   namespace: default
 spec:
   selector:
