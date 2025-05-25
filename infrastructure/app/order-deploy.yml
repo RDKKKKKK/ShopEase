@@ -15,7 +15,6 @@ spec:
       containers:
         - name: order-service
           image: roderickyoung/shopease:order-service-1.0.0
-          imagePullPolicy: Always
           ports:
             - containerPort: 29040
           resources:

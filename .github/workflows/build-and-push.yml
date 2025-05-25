@@ -12,10 +12,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Cache Maven dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
@@ -36,19 +36,3 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-
-      - name: Build Docker image
-        run: |
-          docker build -t roderickyoung/shopease:shop-cart-service-1.0.0 shopease-mall-cloud-shop-cart-service
-          docker build -t roderickyoung/shopease:user-service-1.0.0 shopease-mall-cloud-user-service
-          docker build -t roderickyoung/shopease:order-service-1.0.0 shopease-mall-cloud-order-service
-          docker build -t roderickyoung/shopease:recommend-service-1.0.0 shopease-mall-cloud-recommend-service
-          docker build -t roderickyoung/shopease:goods-service-1.0.0 shopease-mall-cloud-goods-service
-
-      - name: Push Docker image
-        run: |
-          docker push roderickyoung/shopease:shop-cart-service-1.0.0
-          docker push roderickyoung/shopease:user-service-1.0.0
-          docker push roderickyoung/shopease:order-service-1.0.0
-          docker push roderickyoung/shopease:recommend-service-1.0.0
-          docker push roderickyoung/shopease:goods-service-1.0.0

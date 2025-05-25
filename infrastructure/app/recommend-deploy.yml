@@ -16,7 +16,6 @@ spec:
       containers:
         - name: recommend-service
           image: roderickyoung/shopease:recommend-service-1.0.0
-          imagePullPolicy: Always
 
 
           ports:

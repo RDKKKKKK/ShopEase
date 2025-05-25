@@ -14,7 +14,6 @@ spec:
       containers:
         - name: shop-cart-service
           image: roderickyoung/shopease:shop-cart-service-1.0.0
-          imagePullPolicy: Always
           ports:
             - containerPort: 29030
           resources:
