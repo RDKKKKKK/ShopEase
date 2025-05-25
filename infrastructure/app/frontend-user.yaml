@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mall-app-deployment
+  name: dashboard-user-deployment
   labels:
     app: mall-app
 spec:
@@ -30,7 +30,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mall-app-external
+  name: user-external
 spec:
   type: LoadBalancer  # 选择 LoadBalancer
   selector:
