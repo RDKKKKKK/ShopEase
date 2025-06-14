@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: session-deploy #order-service
+  name: ingestion-deploy #order-service
 spec:
   selector:
     matchLabels:
